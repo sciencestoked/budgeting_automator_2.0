@@ -106,24 +106,46 @@ budgeting_automator_2.0/
 
 ✅ **Phase 1: MVP Backend** - Complete
 - [x] FastAPI setup
-- [x] Database models
-- [x] Webhook endpoint
-- [x] Deduplication logic
-- [x] Auto-categorization
+- [x] Database models (Transaction, Category, Goal, Alert)
+- [x] Webhook endpoint with validation
+- [x] Deduplication logic (hash-based)
+- [x] Auto-categorization (rule-based)
+- [x] Raw data collection system
+- [x] Pending clarifications framework
 
-⏳ **Phase 2: Apple Shortcuts** - Next
-- [ ] Email parsing shortcuts
-- [ ] Notification parsing shortcuts
+⏳ **Phase 2: Data Collection** - In Progress
+- [x] Data dump endpoint created
+- [x] Documentation for data extraction
+- [ ] Create Apple Shortcuts
+- [ ] Collect 1 week of raw data
+- [ ] Analyze patterns
 
 🔜 **Phase 3+** - Upcoming
-- [ ] Email reporting
-- [ ] Web dashboard
-- [ ] Goals & alerts
+- [ ] Smart parsers for each source
+- [ ] Vendor name normalization
+- [ ] Advanced duplicate detection
+- [ ] Email reporting (daily/weekly/monthly)
+- [ ] Web dashboard (React + Tailwind)
+- [ ] Goals & alerts UI
 
 ## Documentation
 
+- **[QUICKSTART.md](QUICKSTART.md)** - ⭐ **START HERE** - Deployment, shortcuts setup, troubleshooting
 - [Project Plan](PROJECT_PLAN.md) - Complete architecture and implementation plan
+- [Data Extraction Guide](shortcuts/DATA_EXTRACTION_GUIDE.md) - How to capture transaction data from iOS
 - [API Docs](http://localhost:8000/docs) - Interactive API documentation (when running)
+
+## Key Files
+
+**Backend:**
+- `backend/app/main.py` - API endpoints
+- `backend/app/models.py` - Database schema
+- `backend/app/categorization.py` - Auto-categorization rules
+- `backend/app/deduplication.py` - Duplicate detection
+
+**Guides:**
+- `QUICKSTART.md` - Deployment and setup guide
+- `shortcuts/DATA_EXTRACTION_GUIDE.md` - iOS Shortcuts tutorial
 
 ## License
 
