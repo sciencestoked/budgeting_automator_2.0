@@ -381,15 +381,29 @@ Google Sign-In → Dashboard loads:
 
 ## Current Progress
 
-**Phase:** 0 - Environment Setup
+**Phase:** 1 - MVP Backend COMPLETED ✅
 **Completed Tasks:**
-- ✅ Project plan documentation created
+- ✅ Git repository initialized
+- ✅ Project structure created
+- ✅ Python virtual environment set up
+- ✅ FastAPI backend implemented
+- ✅ Database models (Transaction, Category, Goal, Alert)
+- ✅ Webhook endpoint with validation
+- ✅ Deduplication logic (hash-based)
+- ✅ Auto-categorization (rule-based)
+- ✅ API tested with sample transactions
+- ✅ Initial commit to Git
+
+**API is working:**
+- Webhook endpoint: `POST /api/webhook`
+- Transactions endpoint: `GET /api/transactions`
+- Summary endpoint: `GET /api/summary`
+- Interactive docs: `http://localhost:8000/docs`
 
 **Next Steps:**
-1. Set up Git repository
-2. Configure Ubuntu server networking
-3. Install dependencies (Python, Node.js, PostgreSQL)
-4. Obtain SSL certificate for webhook HTTPS
+1. Create Apple Shortcuts for email/notification parsing
+2. Deploy to Ubuntu server
+3. Set up Cloudflare Tunnel for webhook access
 
 **Blockers:** None
 

@@ -109,3 +109,50 @@ class Alert(Base):
 
     def __repr__(self):
         return f"<Alert(id={self.id}, name='{self.name}', threshold={self.threshold_amount})>"
+
+
+class RawDataDump(Base):
+    """Model for storing raw data from shortcuts for analysis."""
+
+    __tablename__ = "raw_data_dumps"
+
+    id = Column(Integer, primary_key=True, index=True)
+    source = Column(String, nullable=False, index=True)  # email, notification, screenshot, manual
+    timestamp = Column(DateTime, default=datetime.utcnow)
+    raw_text = Column(String)  # The full text content
+    metadata_json = Column(String)  # JSON string for additional metadata
+
+    # Analysis flags
+    analyzed = Column(Boolean, default=False)
+    extraction_successful = Column(Boolean)
+    notes = Column(String)
+
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"<RawDataDump(id={self.id}, source='{self.source}', analyzed={self.analyzed})>"
+
+
+class PendingClarification(Base):
+    """Model for transactions needing user review."""
+
+    __tablename__ = "pending_clarifications"
+
+    id = Column(Integer, primary_key=True, index=True)
+    transaction_id = Column(Integer, ForeignKey('transactions.id'))
+    issue_type = Column(String, nullable=False)  # 'category', 'duplicate', 'vendor', 'missing_data'
+    confidence_score = Column(Float)
+    description = Column(String)
+
+    # For potential duplicates
+    potential_duplicate_id = Column(Integer, ForeignKey('transactions.id'))
+
+    # Resolution
+    resolved = Column(Boolean, default=False)
+    user_action = Column(String)  # 'confirm', 'ignore', 'merge', 'recategorize', 'edit_vendor'
+    resolved_at = Column(DateTime)
+
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"<PendingClarification(id={self.id}, type='{self.issue_type}', resolved={self.resolved})>"

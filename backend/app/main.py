@@ -189,6 +189,85 @@ def create_alert(alert: schemas.AlertCreate, db: Session = Depends(get_db)):
     return crud.create_alert(db=db, alert=alert)
 
 
+@app.post("/api/data-dump")
+def receive_raw_data(data: dict, db: Session = Depends(get_db)):
+    """
+    Endpoint for collecting raw data from Apple Shortcuts during discovery phase.
+    Accepts ANY JSON and stores it for later analysis.
+
+    This helps understand what data we can extract from different sources.
+    """
+    import json
+
+    raw_dump = models.RawDataDump(
+        source=data.get("source", "unknown"),
+        raw_text=data.get("raw_text") or data.get("body") or json.dumps(data),
+        metadata_json=json.dumps(data),
+        analyzed=False
+    )
+
+    db.add(raw_dump)
+    db.commit()
+    db.refresh(raw_dump)
+
+    return {
+        "status": "success",
+        "message": "Raw data received for analysis",
+        "dump_id": raw_dump.id
+    }
+
+
+@app.get("/api/data-dumps")
+def get_raw_dumps(
+    skip: int = 0,
+    limit: int = 50,
+    source: Optional[str] = None,
+    analyzed: Optional[bool] = None,
+    db: Session = Depends(get_db)
+):
+    """Get raw data dumps for analysis."""
+    query = db.query(models.RawDataDump)
+
+    if source:
+        query = query.filter(models.RawDataDump.source == source)
+    if analyzed is not None:
+        query = query.filter(models.RawDataDump.analyzed == analyzed)
+
+    dumps = query.order_by(models.RawDataDump.created_at.desc()).offset(skip).limit(limit).all()
+
+    return [{
+        "id": d.id,
+        "source": d.source,
+        "timestamp": d.timestamp,
+        "raw_text": d.raw_text,
+        "metadata": d.metadata_json,
+        "analyzed": d.analyzed,
+        "created_at": d.created_at
+    } for d in dumps]
+
+
+@app.get("/api/clarifications")
+def get_pending_clarifications(
+    resolved: bool = False,
+    db: Session = Depends(get_db)
+):
+    """Get transactions that need user review."""
+    clarifications = db.query(models.PendingClarification).filter(
+        models.PendingClarification.resolved == resolved
+    ).all()
+
+    return [{
+        "id": c.id,
+        "transaction_id": c.transaction_id,
+        "issue_type": c.issue_type,
+        "confidence_score": c.confidence_score,
+        "description": c.description,
+        "potential_duplicate_id": c.potential_duplicate_id,
+        "resolved": c.resolved,
+        "user_action": c.user_action
+    } for c in clarifications]
+
+
 if __name__ == "__main__":
     import uvicorn
     from .config import settings
