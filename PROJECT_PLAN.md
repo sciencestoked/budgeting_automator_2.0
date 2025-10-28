@@ -381,8 +381,10 @@ Google Sign-In → Dashboard loads:
 
 ## Current Progress
 
-**Phase:** 1 - MVP Backend COMPLETED ✅
-**Completed Tasks:**
+**Phase:** 2 - Data Collection IN PROGRESS ⏳
+**Date:** 2025-10-28
+
+**Phase 1 - MVP Backend COMPLETED ✅**
 - ✅ Git repository initialized
 - ✅ Project structure created
 - ✅ Python virtual environment set up
@@ -392,18 +394,21 @@ Google Sign-In → Dashboard loads:
 - ✅ Deduplication logic (hash-based)
 - ✅ Auto-categorization (rule-based)
 - ✅ API tested with sample transactions
-- ✅ Initial commit to Git
+- ✅ Deployed to Ubuntu server
+- ✅ Systemd service configured (auto-start on boot)
+- ✅ Backend running 24/7 at http://localhost:8000
 
-**API is working:**
+**API Endpoints Working:**
 - Webhook endpoint: `POST /api/webhook`
 - Transactions endpoint: `GET /api/transactions`
 - Summary endpoint: `GET /api/summary`
 - Interactive docs: `http://localhost:8000/docs`
 
 **Next Steps:**
-1. Create Apple Shortcuts for email/notification parsing
-2. Deploy to Ubuntu server
-3. Set up Cloudflare Tunnel for webhook access
+1. Set up Cloudflare Tunnel for webhook access (or use Tailscale)
+2. Create Apple Shortcuts for data collection
+3. Collect 1 week of raw transaction data
+4. Analyze patterns and build smart parsers
 
 **Blockers:** None
 

@@ -27,6 +27,7 @@ wheels/
 venv/
 ENV/
 env/
+budget_automator_backend/
 
 # Environment variables
 .env

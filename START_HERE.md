@@ -29,26 +29,19 @@ ssh homeserver  # Works from anywhere!
 
 ---
 
-### Step 2: Deploy to Ubuntu Server (30 minutes)
+### Step 2: Deploy to Ubuntu Server (30 minutes) ✅ DONE
 **Follow:** [QUICKSTART.md](QUICKSTART.md#3-deploy-backend-to-ubuntu-server) - Section 3
 
-**Commands:**
+**Completed:**
 ```bash
 # Clone repo ✅ DONE
-git clone https://github.com/yourusername/budgeting_automator_2.0.git
-
-# Install dependencies
-cd budgeting_automator_2.0/backend
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
-# Set up systemd service (auto-start on boot)
-sudo nano /etc/systemd/system/budget-api.service
-# (Copy config from QUICKSTART.md)
-sudo systemctl enable budget-api
-sudo systemctl start budget-api
+# Install dependencies ✅ DONE
+# Configure .env file ✅ DONE
+# Set up systemd service ✅ DONE
+# Backend running at http://localhost:8000 ✅ DONE
 ```
+
+**Status:** Backend API is running 24/7, auto-starts on boot, auto-restarts on crash.
 
 ---
 
