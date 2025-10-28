@@ -17,7 +17,7 @@
 
 ## 🎯 Your Next Steps (In Order)
 
-### Step 1: Set Up Tailscale (15 minutes)
+### Step 1: Set Up Tailscale (15 minutes) ✅ DONE
 **Why:** Secure SSH access to your Ubuntu server from anywhere (no port forwarding!)
 
 **Follow:** [QUICKSTART.md](QUICKSTART.md#2-set-up-tailscale-for-remote-ssh-access-) - Section 2
@@ -34,7 +34,7 @@ ssh homeserver  # Works from anywhere!
 
 **Commands:**
 ```bash
-# Clone repo
+# Clone repo ✅ DONE
 git clone https://github.com/yourusername/budgeting_automator_2.0.git
 
 # Install dependencies

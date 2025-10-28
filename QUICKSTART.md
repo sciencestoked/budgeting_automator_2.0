@@ -30,7 +30,7 @@ python -m app.main
 Server runs at: `http://localhost:8000`
 API Docs: `http://localhost:8000/docs`
 
-### 2. Set Up Tailscale (For Remote SSH Access) ⭐ DO THIS FIRST
+### 2. Set Up Tailscale (For Remote SSH Access) ⭐ ✅ DONE
 
 **What:** Creates a secure private network between your devices (Zero Trust VPN)
 
@@ -111,7 +111,7 @@ ssh homeserver
 # SSH into your server (from Mac)
 ssh homeserver
 
-# Clone the repo
+# Clone the repo ✅ DONE
 cd ~
 git clone https://github.com/yourusername/budgeting_automator_2.0.git
 cd budgeting_automator_2.0/backend
