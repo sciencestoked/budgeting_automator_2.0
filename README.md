@@ -130,7 +130,19 @@ budgeting_automator_2.0/
 
 ## Documentation
 
-- **[QUICKSTART.md](QUICKSTART.md)** - ⭐ **START HERE** - Deployment, shortcuts setup, troubleshooting
+### Getting Started
+- **[QUICKSTART.md](QUICKSTART.md)** - ⭐ **START HERE** - Complete setup guide
+  - Tailscale setup (secure SSH access)
+  - Ubuntu server deployment
+  - Cloudflare Tunnel (iPhone → server)
+  - Cleaning up old port forwarding
+
+- **[REMOTE_DEVELOPMENT.md](REMOTE_DEVELOPMENT.md)** - 🖥️ Code on your server from anywhere
+  - VS Code Remote SSH setup
+  - Alternative workflows (SSHFS, tmux, rsync)
+  - Git workflow recommendations
+
+### Detailed Guides
 - [Project Plan](PROJECT_PLAN.md) - Complete architecture and implementation plan
 - [Data Extraction Guide](shortcuts/DATA_EXTRACTION_GUIDE.md) - How to capture transaction data from iOS
 - [API Docs](http://localhost:8000/docs) - Interactive API documentation (when running)
@@ -144,7 +156,8 @@ budgeting_automator_2.0/
 - `backend/app/deduplication.py` - Duplicate detection
 
 **Guides:**
-- `QUICKSTART.md` - Deployment and setup guide
+- `QUICKSTART.md` - Deployment and Tailscale/Cloudflare setup
+- `REMOTE_DEVELOPMENT.md` - How to code remotely on your server
 - `shortcuts/DATA_EXTRACTION_GUIDE.md` - iOS Shortcuts tutorial
 
 ## License
